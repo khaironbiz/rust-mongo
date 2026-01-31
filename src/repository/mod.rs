@@ -17,3 +17,11 @@ pub use appointment::AppointmentRepository;
 pub use service::ServiceRepository;
 pub use insurance::InsuranceRepository;
 pub use user::UserRepository;
+pub use role::RoleRepository;
+pub use user_role::UserRoleRepository;
+
+pub mod role;
+pub mod user_role;
+pub mod code;
+
+pub use code::CodeRepository;

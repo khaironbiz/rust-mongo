@@ -162,3 +162,103 @@ pub struct User {
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
     pub updated_at: Option<String>,
 }
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct RoleCategory {
+    pub code: String,
+    pub system: String,
+    pub display: String,
+    #[serde(rename = "_id")]
+    pub id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Role {
+    #[serde(rename(serialize = "id", deserialize = "_id"), skip_serializing_if = "Option::is_none", serialize_with = "serialize_oid_as_id")]
+    pub id: Option<ObjectId>,
+    pub code: String,
+    pub system: String,
+    pub display: String,
+    pub category: RoleCategory,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct RoleEmbed {
+    pub code: String,
+    pub system: String,
+    pub display: String,
+    pub category: RoleCategory,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct UserName {
+    #[serde(rename = "nama_depan")]
+    pub nama_depan: String,
+    #[serde(rename = "nama_belakang")]
+    pub nama_belakang: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct UserContact {
+    pub email: String,
+    #[serde(rename = "nomor_telepon")]
+    pub nomor_telepon: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct UserBirth {
+    pub tempat: String,
+    pub tanggal: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct UserEmbed {
+    pub nama: UserName,
+    pub nik: String,
+    pub kontak: UserContact,
+    pub lahir: UserBirth,
+    #[serde(rename = "_id")]
+    pub id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct OrganizationEmbed {
+    pub name: String,
+    #[serde(rename = "_id")]
+    pub id: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct UserRole {
+    #[serde(rename(serialize = "id", deserialize = "_id"), skip_serializing_if = "Option::is_none", serialize_with = "serialize_oid_as_id")]
+    pub id: Option<ObjectId>,
+    pub role: RoleEmbed,
+    pub user: UserEmbed,
+    pub organisasi: OrganizationEmbed,
+    #[serde(rename = "is_active")]
+    pub is_active: bool,
+    #[serde(rename = "updated_at")]
+    pub updated_at: String,
+    #[serde(rename = "created_at")]
+    pub created_at: String,
+}
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct CodeCategoryEmbed {
+    pub code: String,
+    pub system: String,
+    pub display: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Code {
+    #[serde(rename(serialize = "id", deserialize = "_id"), skip_serializing_if = "Option::is_none", serialize_with = "serialize_oid_as_id")]
+    pub id: Option<ObjectId>,
+    pub code: String,
+    pub display: String,
+    pub system: String,
+    pub category: CodeCategoryEmbed,
+    #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
+    pub updated_at: Option<String>,
+    #[serde(rename = "created_at")]
+    pub created_at: String,
+}

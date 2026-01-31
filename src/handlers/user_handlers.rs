@@ -8,7 +8,8 @@ use std::sync::Arc;
 
 use crate::{
     db::AppState,
-    dto::{RegisterRequest, UpdateUserRequest},
+    dto::auth::RegisterRequest,
+    dto::user::UpdateUserRequest,
     response::{ApiResponse, ErrorResponse, no_content, PaginatedResponse},
     repository::UserRepository,
     services::UserService,

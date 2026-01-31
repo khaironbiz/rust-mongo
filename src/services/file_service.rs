@@ -2,6 +2,7 @@ use crate::models::File;
 use crate::repository::FileRepository;
 use crate::validation;
 use crate::pagination::{PaginationParams, PaginationMeta};
+use crate::dto::file::FileResponse;
 use mongodb::bson::oid::ObjectId;
 use axum::http::StatusCode;
 use std::sync::Arc;
@@ -20,18 +21,36 @@ impl FileService {
         }
     }
 
-    pub async fn get_all(&self) -> Result<Vec<File>, String> {
-        self.repository.find_all().await
+    /// Map File model to FileResponse DTO
+    fn map_to_response(file: File) -> FileResponse {
+        FileResponse {
+            id: file.id.map(|id| id.to_hex()).unwrap_or_default(),
+            name: file.name,
+            file_type: file.file_type,
+            extension: file.extension,
+            size: file.size,
+            path: file.path,
+            url: file.url,
+            uploader: file.uploader,
+            created_at: file.created_at,
+        }
     }
 
-    pub async fn get_all_paginated(&self, pagination: PaginationParams) -> Result<(Vec<File>, PaginationMeta), String> {
+    pub async fn get_all(&self) -> Result<Vec<FileResponse>, String> {
+        let files = self.repository.find_all().await?;
+        Ok(files.into_iter().map(Self::map_to_response).collect())
+    }
+
+    pub async fn get_all_paginated(&self, pagination: PaginationParams) -> Result<(Vec<FileResponse>, PaginationMeta), String> {
         let (files, total) = self.repository.find_all_paginated(pagination.clone()).await?;
+        let responses = files.into_iter().map(Self::map_to_response).collect();
         let meta = PaginationMeta::new(pagination.page, pagination.limit, total);
-        Ok((files, meta))
+        Ok((responses, meta))
     }
 
-    pub async fn get_by_id(&self, id: ObjectId) -> Result<Option<File>, String> {
-        self.repository.find_by_id(id).await
+    pub async fn get_by_id(&self, id: ObjectId) -> Result<Option<FileResponse>, String> {
+        let file = self.repository.find_by_id(id).await?;
+        Ok(file.map(Self::map_to_response))
     }
 
     pub async fn create(
@@ -39,14 +58,13 @@ impl FileService {
         file_name: String,
         file_bytes: Vec<u8>,
         uploader: String,
-    ) -> Result<(StatusCode, File), (StatusCode, String)> {
-        // Validate file
+    ) -> Result<(StatusCode, FileResponse), (StatusCode, String)> {
+        // ... (validation and upload logic same) ...
         let file_size = file_bytes.len() as u64;
         if let Err(_) = validation::validate_file_upload(&file_name, file_size) {
             return Err((StatusCode::BAD_REQUEST, "Invalid file".to_string()));
         }
 
-        // Upload to S3
         let s3_key = crate::s3::generate_s3_key(&file_name);
         let bucket = std::env::var("AWS_BUCKET").unwrap_or_else(|_| "atm-sehat".to_string());
 
@@ -55,8 +73,7 @@ impl FileService {
             Err(e) => return Err((StatusCode::INTERNAL_SERVER_ERROR, e)),
         };
 
-        // Create file record
-        let mut file_record = File {
+        let file_record = File {
             id: Some(ObjectId::new()),
             name: file_name.clone(),
             file_type: mime_guess::from_path(&file_name)
@@ -71,9 +88,8 @@ impl FileService {
             created_at: chrono::Local::now().format("%Y-%m-%d %H:%M:%S").to_string(),
         };
 
-        // Save to database
         match self.repository.insert(file_record).await {
-            Ok(created) => Ok((StatusCode::CREATED, created)),
+            Ok(created) => Ok((StatusCode::CREATED, Self::map_to_response(created))),
             Err(e) => Err((StatusCode::INTERNAL_SERVER_ERROR, e)),
         }
     }

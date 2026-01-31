@@ -7,7 +7,7 @@ use std::sync::Arc;
 
 use crate::{
     db::AppState,
-    dto::{
+    dto::auth::{
         RegisterRequest, LoginRequest, ForgotPasswordRequest, ResetPasswordRequest,
         RefreshTokenRequest,
     },

@@ -95,6 +95,15 @@ impl PaginationMeta {
     }
 }
 
+/// Generic Paginated Result for Repository layer
+#[derive(Debug, Clone)]
+pub struct PaginatedResult<T> {
+    pub data: Vec<T>,
+    pub total_items: u64,
+    pub total_pages: u64,
+    pub current_page: u32,
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

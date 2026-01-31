@@ -1,0 +1,14 @@
+pub mod medical_record;
+pub mod doctor;
+pub mod nurse;
+pub mod medicine;
+pub mod appointment;
+pub mod service;
+pub mod insurance;
+pub mod file;
+pub mod auth;
+pub mod user;
+pub mod common;
+pub mod role;
+pub mod user_role;
+pub mod code;

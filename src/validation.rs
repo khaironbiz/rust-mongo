@@ -138,3 +138,35 @@ pub fn validate_file_upload(filename: &str, file_size: u64) -> Result<(), Valida
 
     Ok(())
 }
+
+use validator::{Validate, ValidationErrors};
+use crate::response::ErrorResponse;
+
+/// Generic function to validate any DTO that implements Validate
+pub fn validate_payload<T: Validate>(payload: &T) -> Result<(), ErrorResponse> {
+    match payload.validate() {
+        Ok(_) => Ok(()),
+        Err(e) => {
+            let error_messages = format_validation_errors(&e);
+            Err(ErrorResponse::validation_error(
+                "Validation failed",
+                Some(error_messages),
+            ))
+        }
+    }
+}
+
+fn format_validation_errors(errors: &ValidationErrors) -> String {
+    errors
+        .field_errors()
+        .iter()
+        .map(|(field, errors)| {
+            let msgs: Vec<String> = errors
+                .iter()
+                .map(|e| e.message.clone().unwrap_or_else(|| "Invalid value".into()).into_owned())
+                .collect();
+            format!("{}: {}", field, msgs.join(", "))
+        })
+        .collect::<Vec<String>>()
+        .join("; ")
+}

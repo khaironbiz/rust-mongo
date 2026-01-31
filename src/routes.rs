@@ -38,19 +38,34 @@ pub fn create_router(state: Arc<AppState>) -> Router {
         .route("/medical-records/:id", get(get_medical_record).put(update_medical_record).delete(delete_medical_record))
         // Doctors
         .route("/doctors", get(get_doctors).post(create_doctor))
+        .route("/doctors/:id", get(get_doctor).put(update_doctor).delete(delete_doctor))
         // Nurses
-        .route("/nurses", get(get_nurses))
+        .route("/nurses", get(get_nurses).post(create_nurse))
+        .route("/nurses/:id", get(get_nurse).put(update_nurse).delete(delete_nurse))
         // Medicines
-        .route("/medicines", get(get_medicines))
+        .route("/medicines", get(get_medicines).post(create_medicine))
+        .route("/medicines/:id", get(get_medicine).put(update_medicine).delete(delete_medicine))
         // Appointments
         .route("/appointments", get(get_appointments).post(create_appointment))
+        .route("/appointments/:id", get(get_appointment).put(update_appointment).delete(delete_appointment))
         // Services
-        .route("/services", get(get_services))
+        .route("/services", get(get_services).post(create_service))
+        .route("/services/:id", get(get_service).put(update_service).delete(delete_service))
         // Insurances
-        .route("/insurances", get(get_insurances))
+        .route("/insurances", get(get_insurances).post(create_insurance))
+        .route("/insurances/:id", get(get_insurance).put(update_insurance).delete(delete_insurance))
         // Files
         .route("/files", get(get_files).post(create_file))
         .route("/files/:id", get(get_file).delete(delete_file))
+        // Roles
+        .route("/roles", get(get_roles).post(create_role))
+        .route("/roles/:id", get(get_role).put(update_role).delete(delete_role))
+        // User Roles
+        .route("/user-roles", get(get_user_roles).post(create_user_role))
+        .route("/user-roles/:id", get(get_user_role).put(update_user_role).delete(delete_user_role))
+        // Codes
+        .route("/codes", get(get_codes).post(create_code))
+        .route("/codes/:id", get(get_code).put(update_code).delete(delete_code))
         // Apply auth middleware ONLY to these protected routes
         .layer(middleware::from_fn_with_state(state.clone(), auth_middleware));
 

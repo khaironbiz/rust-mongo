@@ -19,3 +19,11 @@ pub use service_service::ServiceService;
 pub use insurance_service::InsuranceService;
 pub use auth_service::AuthService;
 pub use user_service::UserService;
+pub use role_service::RoleService;
+pub use user_role_service::UserRoleService;
+
+pub mod role_service;
+pub mod user_role_service;
+pub mod code_service;
+
+pub use code_service::CodeService;

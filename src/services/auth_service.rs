@@ -6,7 +6,7 @@ use rand::Rng;
 use serde::{Deserialize, Serialize};
 use std::env;
 
-use crate::dto::{
+use crate::dto::auth::{
     RegisterRequest, LoginRequest, ForgotPasswordRequest, ResetPasswordRequest,
     AuthResponse, LoginResponse, ForgotPasswordResponse, ResetPasswordResponse,
     RefreshTokenRequest, RefreshTokenResponse,

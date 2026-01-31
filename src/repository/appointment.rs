@@ -64,4 +64,28 @@ impl AppointmentRepository {
 
         Ok(appointment)
     }
+
+    pub async fn find_by_id(&self, id: mongodb::bson::oid::ObjectId) -> Result<Option<Appointment>, String> {
+        let collection = self.db.collection::<Appointment>("appointments");
+        collection
+            .find_one(doc! { "_id": id }, None)
+            .await
+            .map_err(|e| format!("Database error: {}", e))
+    }
+
+    pub async fn update(&self, id: mongodb::bson::oid::ObjectId, appointment: Appointment) -> Result<Appointment, String> {
+        let collection = self.db.collection::<Appointment>("appointments");
+        match collection.replace_one(doc! { "_id": id }, appointment.clone(), None).await {
+            Ok(_) => Ok(appointment),
+            Err(e) => Err(format!("Failed to update appointment: {}", e)),
+        }
+    }
+
+    pub async fn delete(&self, id: mongodb::bson::oid::ObjectId) -> Result<bool, String> {
+        let collection = self.db.collection::<Appointment>("appointments");
+        match collection.delete_one(doc! { "_id": id }, None).await {
+            Ok(result) => Ok(result.deleted_count > 0),
+            Err(e) => Err(format!("Failed to delete appointment: {}", e)),
+        }
+    }
 }

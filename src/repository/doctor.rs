@@ -72,4 +72,20 @@ impl DoctorRepository {
 
         Ok(doctor)
     }
+
+    pub async fn update(&self, id: mongodb::bson::oid::ObjectId, doctor: Doctor) -> Result<Doctor, String> {
+        let collection = self.db.collection::<Doctor>("doctors");
+        match collection.replace_one(doc! { "_id": id }, doctor.clone(), None).await {
+            Ok(_) => Ok(doctor),
+            Err(e) => Err(format!("Failed to update doctor: {}", e)),
+        }
+    }
+
+    pub async fn delete(&self, id: mongodb::bson::oid::ObjectId) -> Result<bool, String> {
+        let collection = self.db.collection::<Doctor>("doctors");
+        match collection.delete_one(doc! { "_id": id }, None).await {
+            Ok(result) => Ok(result.deleted_count > 0),
+            Err(e) => Err(format!("Failed to delete doctor: {}", e)),
+        }
+    }
 }

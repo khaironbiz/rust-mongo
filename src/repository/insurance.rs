@@ -49,4 +49,36 @@ impl InsuranceRepository {
             Err(e) => Err(format!("Database error: {}", e)),
         }
     }
+
+    pub async fn insert(&self, insurance: Insurance) -> Result<Insurance, String> {
+        let collection = self.db.collection::<Insurance>("insurances");
+        match collection.insert_one(insurance.clone(), None).await {
+            Ok(_) => Ok(insurance),
+            Err(e) => Err(format!("Failed to insert insurance: {}", e)),
+        }
+    }
+
+    pub async fn find_by_id(&self, id: mongodb::bson::oid::ObjectId) -> Result<Option<Insurance>, String> {
+        let collection = self.db.collection::<Insurance>("insurances");
+        collection
+            .find_one(doc! { "_id": id }, None)
+            .await
+            .map_err(|e| format!("Database error: {}", e))
+    }
+
+    pub async fn update(&self, id: mongodb::bson::oid::ObjectId, insurance: Insurance) -> Result<Insurance, String> {
+        let collection = self.db.collection::<Insurance>("insurances");
+        match collection.replace_one(doc! { "_id": id }, insurance.clone(), None).await {
+            Ok(_) => Ok(insurance),
+            Err(e) => Err(format!("Failed to update insurance: {}", e)),
+        }
+    }
+
+    pub async fn delete(&self, id: mongodb::bson::oid::ObjectId) -> Result<bool, String> {
+        let collection = self.db.collection::<Insurance>("insurances");
+        match collection.delete_one(doc! { "_id": id }, None).await {
+            Ok(result) => Ok(result.deleted_count > 0),
+            Err(e) => Err(format!("Failed to delete insurance: {}", e)),
+        }
+    }
 }

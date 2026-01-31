@@ -2,9 +2,8 @@ use axum::http::StatusCode;
 use bcrypt::{hash, DEFAULT_COST};
 use mongodb::bson::oid::ObjectId;
 
-use crate::dto::{
-    RegisterRequest, UserResponse, UpdateUserRequest,
-};
+use crate::dto::auth::RegisterRequest;
+use crate::dto::user::{UserResponse, UpdateUserRequest};
 use crate::models::User;
 use crate::repository::UserRepository;
 use crate::pagination::{PaginationParams, PaginationMeta};

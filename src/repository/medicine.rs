@@ -49,4 +49,36 @@ impl MedicineRepository {
             Err(e) => Err(format!("Database error: {}", e)),
         }
     }
+
+    pub async fn insert(&self, medicine: Medicine) -> Result<Medicine, String> {
+        let collection = self.db.collection::<Medicine>("medicines");
+        match collection.insert_one(medicine.clone(), None).await {
+            Ok(_) => Ok(medicine),
+            Err(e) => Err(format!("Failed to insert medicine: {}", e)),
+        }
+    }
+
+    pub async fn find_by_id(&self, id: mongodb::bson::oid::ObjectId) -> Result<Option<Medicine>, String> {
+        let collection = self.db.collection::<Medicine>("medicines");
+        collection
+            .find_one(doc! { "_id": id }, None)
+            .await
+            .map_err(|e| format!("Database error: {}", e))
+    }
+
+    pub async fn update(&self, id: mongodb::bson::oid::ObjectId, medicine: Medicine) -> Result<Medicine, String> {
+        let collection = self.db.collection::<Medicine>("medicines");
+        match collection.replace_one(doc! { "_id": id }, medicine.clone(), None).await {
+            Ok(_) => Ok(medicine),
+            Err(e) => Err(format!("Failed to update medicine: {}", e)),
+        }
+    }
+
+    pub async fn delete(&self, id: mongodb::bson::oid::ObjectId) -> Result<bool, String> {
+        let collection = self.db.collection::<Medicine>("medicines");
+        match collection.delete_one(doc! { "_id": id }, None).await {
+            Ok(result) => Ok(result.deleted_count > 0),
+            Err(e) => Err(format!("Failed to delete medicine: {}", e)),
+        }
+    }
 }
