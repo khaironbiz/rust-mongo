@@ -438,3 +438,74 @@ impl AuthService {
         Ok(())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use lazy_static::lazy_static;
+    use std::sync::Mutex;
+
+    // These tests rely on process-wide environment variables.
+    // Rust test runner executes tests in parallel by default, so we must
+    // serialize env var mutations to avoid flaky failures.
+    lazy_static! {
+        static ref ENV_LOCK: Mutex<()> = Mutex::new(());
+    }
+
+    fn make_user() -> User {
+        User {
+            id: Some(ObjectId::new()),
+            email: "user@example.com".to_string(),
+            password: "hashed".to_string(),
+            name: "User".to_string(),
+            refresh_token: None,
+            reset_token: None,
+            reset_token_expiry: None,
+            created_at: "2026-01-01 00:00:00".to_string(),
+            updated_at: None,
+        }
+    }
+
+    #[test]
+    fn access_token_roundtrip_success() {
+        let _guard = ENV_LOCK.lock().unwrap();
+        std::env::set_var("JWT_SECRET", "test_jwt_secret");
+        let user = make_user();
+
+        let (access, _expires_in) = AuthService::generate_access_token(&user).expect("token");
+        let claims = AuthService::validate_token(&access).expect("claims");
+
+        assert_eq!(claims.email, user.email);
+        assert_eq!(claims.name, user.name);
+        assert_eq!(claims.token_type, "access");
+    }
+
+    #[test]
+    fn refresh_token_roundtrip_success() {
+        let _guard = ENV_LOCK.lock().unwrap();
+        std::env::set_var("REFRESH_TOKEN_SECRET", "test_refresh_secret");
+        let user = make_user();
+
+        let refresh = AuthService::generate_refresh_token(&user).expect("refresh token");
+        let claims = AuthService::validate_refresh_token(&refresh).expect("refresh claims");
+
+        assert_eq!(claims.sub, user.id.unwrap().to_hex());
+        assert_eq!(claims.token_type, "refresh");
+    }
+
+    #[test]
+    fn validate_token_rejects_refresh_token() {
+        let _guard = ENV_LOCK.lock().unwrap();
+        // Use the same secret so the JWT can be decoded, then we can assert
+        // the rejection happens due to token_type (not signature mismatch).
+        std::env::set_var("JWT_SECRET", "test_shared_secret");
+        std::env::set_var("REFRESH_TOKEN_SECRET", "test_shared_secret");
+        let user = make_user();
+
+        let refresh = AuthService::generate_refresh_token(&user).expect("refresh token");
+        let err = AuthService::validate_token(&refresh).expect_err("should reject refresh token");
+
+        // Keep the assertion tolerant to formatting changes.
+        assert!(err.to_lowercase().contains("token type"));
+    }
+}

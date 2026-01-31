@@ -19,6 +19,7 @@ pub fn create_router(state: Arc<AppState>) -> Router {
         // Auth routes
         .route("/auth/register", post(register))
         .route("/auth/login", post(login))
+        .route("/auth/refresh", post(refresh_token))
         .route("/auth/forgot-password", post(forgot_password))
         .route("/auth/reset-password", post(reset_password))
         // Documentation routes

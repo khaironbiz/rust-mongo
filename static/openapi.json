@@ -7,6 +7,42 @@
   },
   "servers": [ { "url": "http://localhost:8000" } ],
   "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register user",
+        "responses": { "201": { "description": "Created" } }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login user",
+        "responses": { "200": { "description": "OK" }, "401": { "description": "Unauthorized" } }
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "summary": "Refresh access token using refresh token",
+        "responses": { "200": { "description": "OK" }, "401": { "description": "Unauthorized" } }
+      }
+    },
+    "/auth/forgot-password": {
+      "post": {
+        "summary": "Request password reset",
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/auth/reset-password": {
+      "post": {
+        "summary": "Reset password using token",
+        "responses": { "200": { "description": "OK" }, "400": { "description": "Bad Request" } }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Get current user",
+        "responses": { "200": { "description": "OK" }, "401": { "description": "Unauthorized" } }
+      }
+    },
     "/medical-records": {
       "get": {
         "summary": "List medical records",

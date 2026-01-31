@@ -33,6 +33,24 @@ pub async fn openapi_json() -> impl IntoResponse {
         "openapi": "3.0.0",
         "info": { "title": "RME API", "version": "0.1.0" },
         "paths": {
+            "/auth/register": {
+                "post": { "summary": "Register user" }
+            },
+            "/auth/login": {
+                "post": { "summary": "Login user" }
+            },
+            "/auth/refresh": {
+                "post": { "summary": "Refresh access token using refresh token" }
+            },
+            "/auth/forgot-password": {
+                "post": { "summary": "Request password reset" }
+            },
+            "/auth/reset-password": {
+                "post": { "summary": "Reset password using token" }
+            },
+            "/auth/me": {
+                "get": { "summary": "Get current user (requires Bearer access token)" }
+            },
             "/medical-records": {
                 "get": { "summary": "List medical records" },
                 "post": { "summary": "Create medical record" }

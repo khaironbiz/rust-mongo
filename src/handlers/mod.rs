@@ -19,7 +19,7 @@ use crate::{
 };
 
 // Re-export auth handlers
-pub use auth_handlers::{register, login, forgot_password, reset_password, get_me};
+pub use auth_handlers::{register, login, refresh_token, forgot_password, reset_password, get_me};
 
 // --- Medical Records ---
 

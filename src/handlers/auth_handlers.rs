@@ -7,7 +7,10 @@ use std::sync::Arc;
 
 use crate::{
     db::AppState,
-    dto::{RegisterRequest, LoginRequest, ForgotPasswordRequest, ResetPasswordRequest},
+    dto::{
+        RegisterRequest, LoginRequest, ForgotPasswordRequest, ResetPasswordRequest,
+        RefreshTokenRequest,
+    },
     response::{ApiResponse, ErrorResponse},
     repository::UserRepository,
     services::AuthService,
@@ -71,6 +74,35 @@ pub async fn login(
                 _ => "LOGIN_FAILED",
             };
             ErrorResponse::new(status, "Login failed", error_code, Some(msg)).into_response()
+        }
+    }
+}
+
+/// Refresh access token using refresh token
+///
+/// POST /auth/refresh
+///
+/// Request body:
+/// ```json
+/// {
+///     "refresh_token": "<refresh_token_here>"
+/// }
+/// ```
+pub async fn refresh_token(
+    State(state): State<Arc<AppState>>,
+    Json(payload): Json<RefreshTokenRequest>,
+) -> impl IntoResponse {
+    let repo = UserRepository::new(state.db.clone());
+    let service = AuthService::new(repo);
+
+    match service.refresh_token(payload).await {
+        Ok(response) => ApiResponse::ok("Token refreshed successfully", response).into_response(),
+        Err((status, msg)) => {
+            let error_code = match status.as_u16() {
+                401 => "INVALID_REFRESH_TOKEN",
+                _ => "REFRESH_TOKEN_FAILED",
+            };
+            ErrorResponse::new(status, "Failed to refresh token", error_code, Some(msg)).into_response()
         }
     }
 }

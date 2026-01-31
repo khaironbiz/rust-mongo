@@ -65,6 +65,9 @@ pub async fn auth_middleware(
 /// 
 /// Usage in handlers:
 /// ```
+/// use axum::{Extension, response::IntoResponse};
+/// use rme_api_rust::AuthUser;
+///
 /// pub async fn protected_handler(
 ///     Extension(user): Extension<AuthUser>,
 /// ) -> impl IntoResponse {

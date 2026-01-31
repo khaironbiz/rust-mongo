@@ -7,6 +7,8 @@ async fn get_doctors_returns_ok() {
     let state = rme_api_rust::db::init_db().await.expect("db init");
     let app = rme_api_rust::routes::create_router(state);
 
+    // This route is protected by auth middleware, so it should return 401 without a token.
+
     let req = Request::builder()
         .method("GET")
         .uri("/doctors")
@@ -14,7 +16,7 @@ async fn get_doctors_returns_ok() {
         .unwrap();
 
     let resp = app.oneshot(req).await.expect("request failed");
-    assert_eq!(resp.status(), StatusCode::OK);
+    assert_eq!(resp.status(), StatusCode::UNAUTHORIZED);
 }
 
 #[tokio::test]
@@ -23,6 +25,8 @@ async fn get_medical_records_returns_ok() {
     let state = rme_api_rust::db::init_db().await.expect("db init");
     let app = rme_api_rust::routes::create_router(state);
 
+    // This route is protected by auth middleware, so it should return 401 without a token.
+
     let req = Request::builder()
         .method("GET")
         .uri("/medical-records")
@@ -30,5 +34,5 @@ async fn get_medical_records_returns_ok() {
         .unwrap();
 
     let resp = app.oneshot(req).await.expect("request failed");
-    assert_eq!(resp.status(), StatusCode::OK);
+    assert_eq!(resp.status(), StatusCode::UNAUTHORIZED);
 }
