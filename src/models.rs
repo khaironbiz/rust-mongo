@@ -127,3 +127,38 @@ pub struct Insurance {
     pub code: String,
     pub status: String,
 }
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct File {
+    #[serde(rename(serialize = "id", deserialize = "_id"), skip_serializing_if = "Option::is_none", serialize_with = "serialize_oid_as_id")]
+    pub id: Option<ObjectId>,
+    pub name: String,
+    #[serde(rename = "type")]
+    pub file_type: String,
+    pub extension: String,
+    pub size: u64,
+    pub path: String,
+    pub url: String,
+    pub uploader: String,
+    #[serde(rename = "createdAt")]
+    pub created_at: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct User {
+    #[serde(rename(serialize = "id", deserialize = "_id"), skip_serializing_if = "Option::is_none", serialize_with = "serialize_oid_as_id")]
+    pub id: Option<ObjectId>,
+    pub email: String,
+    pub password: String,
+    pub name: String,
+    #[serde(rename = "refreshToken", skip_serializing_if = "Option::is_none")]
+    pub refresh_token: Option<String>,
+    #[serde(rename = "resetToken", skip_serializing_if = "Option::is_none")]
+    pub reset_token: Option<String>,
+    #[serde(rename = "resetTokenExpiry", skip_serializing_if = "Option::is_none")]
+    pub reset_token_expiry: Option<String>,
+    #[serde(rename = "createdAt")]
+    pub created_at: String,
+    #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
+    pub updated_at: Option<String>,
+}

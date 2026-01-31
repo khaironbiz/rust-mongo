@@ -1,7 +1,16 @@
 mod db;
 mod models;
 mod handlers;
+mod docs;
 mod routes;
+mod validation;
+mod s3;
+mod repository;
+mod services;
+mod response;
+mod pagination;
+mod dto;
+mod middleware;
 
 use dotenvy::dotenv;
 use std::env;

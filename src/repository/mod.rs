@@ -1,0 +1,19 @@
+pub mod medical_record;
+pub mod file;
+pub mod doctor;
+pub mod nurse;
+pub mod medicine;
+pub mod appointment;
+pub mod service;
+pub mod insurance;
+pub mod user;
+
+pub use medical_record::MedicalRecordRepository;
+pub use file::FileRepository;
+pub use doctor::DoctorRepository;
+pub use nurse::NurseRepository;
+pub use medicine::MedicineRepository;
+pub use appointment::AppointmentRepository;
+pub use service::ServiceRepository;
+pub use insurance::InsuranceRepository;
+pub use user::UserRepository;

@@ -1,0 +1,29 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RME API Rust",
+    "version": "0.1.0",
+    "description": "Minimal OpenAPI spec for the RME API"
+  },
+  "servers": [ { "url": "http://localhost:8000" } ],
+  "paths": {
+    "/medical-records": {
+      "get": {
+        "summary": "List medical records",
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": { "summary": "Create medical record", "responses": { "201": { "description": "Created" } } }
+    },
+    "/medical-records/{id}": {
+      "get": { "summary": "Get medical record", "parameters": [{"name":"id","in":"path","required":true,"schema":{"type":"string"}}], "responses": { "200": { "description": "OK" }, "404": { "description": "Not found" } } },
+      "put": { "summary": "Update medical record", "responses": { "200": { "description": "OK" } } },
+      "delete": { "summary": "Delete medical record", "responses": { "204": { "description": "No Content" } } }
+    },
+    "/doctors": { "get": { "summary": "List doctors", "responses": { "200": { "description": "OK" } } }, "post": { "summary": "Create doctor", "responses": { "201": { "description": "Created" } } } },
+    "/nurses": { "get": { "summary": "List nurses", "responses": { "200": { "description": "OK" } } } },
+    "/medicines": { "get": { "summary": "List medicines", "responses": { "200": { "description": "OK" } } } },
+    "/appointments": { "get": { "summary": "List appointments", "responses": { "200": { "description": "OK" } } }, "post": { "summary": "Create appointment", "responses": { "201": { "description": "Created" } } } },
+    "/services": { "get": { "summary": "List services", "responses": { "200": { "description": "OK" } } } },
+    "/insurances": { "get": { "summary": "List insurances", "responses": { "200": { "description": "OK" } } } }
+  }
+}

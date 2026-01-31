@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-axum = "0.7.5"
+axum = { version = "0.7.5", features = ["multipart"] }
 chrono = { version = "0.4.38", features = ["serde"] }
 dotenvy = "0.15.7"
 mongodb = "2.8.2"
@@ -15,3 +15,17 @@ tokio = { version = "1.38.0", features = ["full"] }
 tower-http = { version = "0.5.2", features = ["cors", "trace"] }
 tracing-subscriber = "0.3.18"
 url = "=2.4.1"
+futures-util = "0.3"
+aws-sdk-s3 = "1.9"
+aws-config = "1.1"
+aws-credential-types = "1.0"
+lazy_static = "1.4"
+mime_guess = "2.0"
+jsonwebtoken = "9.2"
+bcrypt = "0.15"
+rand = "0.8"
+
+[dev-dependencies]
+tower = "0.5"
+# Tambahkan ini untuk validasi struct
+validator = { version = "0.16", features = ["derive"] }
