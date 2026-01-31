@@ -22,6 +22,10 @@ pub use user_role::UserRoleRepository;
 
 pub mod role;
 pub mod user_role;
+pub mod child_code;
 pub mod code;
 
 pub use code::CodeRepository;
+pub use child_code::ChildCodeRepository;
+pub mod region;
+pub use region::RegionRepository;

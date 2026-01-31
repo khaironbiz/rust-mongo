@@ -11,6 +11,8 @@ pub mod file_handlers;
 
 pub mod role_handlers;
 pub mod user_role_handlers;
+pub mod child_code_handlers;
+pub mod region_handlers;
 
 // Re-export handlers for easy access
 pub use auth_handlers::*;

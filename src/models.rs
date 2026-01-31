@@ -262,3 +262,41 @@ pub struct Code {
     #[serde(rename = "created_at")]
     pub created_at: String,
 }
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ParentCodeEmbed {
+    #[serde(rename = "code_id")] // Maps to code_id in JSON
+    pub code_id: String,
+    pub code: String,
+    pub system: String,
+    pub display: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct ChildCode {
+    #[serde(rename(serialize = "id", deserialize = "_id"), skip_serializing_if = "Option::is_none", serialize_with = "serialize_oid_as_id")]
+    pub id: Option<ObjectId>,
+    pub parent: ParentCodeEmbed,
+    #[serde(rename = "code_id")]
+    pub code_id: String, // Reference to the Child Code's original ID (from Code collection)
+    pub code: String,
+    pub system: String,
+    pub display: String,
+    pub norut: i32,
+    #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
+    pub updated_at: Option<String>,
+    #[serde(rename = "created_at")]
+    pub created_at: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Region {
+    #[serde(rename(serialize = "id", deserialize = "_id"), skip_serializing_if = "Option::is_none", serialize_with = "serialize_oid_as_id")]
+    pub id: Option<ObjectId>,
+    pub code: String,
+    pub name: String,
+    #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
+    pub updated_at: Option<String>,
+    #[serde(rename = "created_at")]
+    pub created_at: String,
+}

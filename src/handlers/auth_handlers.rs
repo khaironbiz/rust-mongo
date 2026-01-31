@@ -32,6 +32,10 @@ pub async fn register(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<RegisterRequest>,
 ) -> impl IntoResponse {
+    if let Err(e) = crate::validation::validate_payload(&payload) {
+        return e.into_response();
+    }
+
     let repo = UserRepository::new(state.db.clone());
     let service = AuthService::new(repo);
     
@@ -63,6 +67,10 @@ pub async fn login(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<LoginRequest>,
 ) -> impl IntoResponse {
+    if let Err(e) = crate::validation::validate_payload(&payload) {
+        return e.into_response();
+    }
+
     let repo = UserRepository::new(state.db.clone());
     let service = AuthService::new(repo);
     
@@ -92,6 +100,10 @@ pub async fn refresh_token(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<RefreshTokenRequest>,
 ) -> impl IntoResponse {
+    if let Err(e) = crate::validation::validate_payload(&payload) {
+        return e.into_response();
+    }
+
     let repo = UserRepository::new(state.db.clone());
     let service = AuthService::new(repo);
 
@@ -121,6 +133,10 @@ pub async fn forgot_password(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<ForgotPasswordRequest>,
 ) -> impl IntoResponse {
+    if let Err(e) = crate::validation::validate_payload(&payload) {
+        return e.into_response();
+    }
+
     let repo = UserRepository::new(state.db.clone());
     let service = AuthService::new(repo);
     
@@ -147,6 +163,10 @@ pub async fn reset_password(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<ResetPasswordRequest>,
 ) -> impl IntoResponse {
+    if let Err(e) = crate::validation::validate_payload(&payload) {
+        return e.into_response();
+    }
+
     let repo = UserRepository::new(state.db.clone());
     let service = AuthService::new(repo);
     

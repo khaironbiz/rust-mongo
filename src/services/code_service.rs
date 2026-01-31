@@ -20,15 +20,21 @@ impl CodeService {
             return Err(format!("Code '{}' already exists", dto.code));
         }
 
+        // Fetch Category by ID (Self-referential or from another collection if Code is Category?)
+        // Assuming Category is also a Code
+        let category_oid = ObjectId::parse_str(&dto.category_id).map_err(|_| "Invalid Category ID format")?;
+        let category_code = self.repo.find_by_id(category_oid).await?
+            .ok_or_else(|| "Category Code not found".to_string())?;
+
         let code = Code {
             id: None,
             code: dto.code,
             display: dto.display,
             system: dto.system,
             category: CodeCategoryEmbed {
-                code: dto.category.code,
-                system: dto.category.system,
-                display: dto.category.display,
+                code: category_code.code,
+                system: category_code.system,
+                display: category_code.display,
             },
             created_at: Local::now().format("%Y-%m-%d %H:%M:%S").to_string(),
             updated_at: Some(Local::now().format("%Y-%m-%d %H:%M:%S").to_string()),

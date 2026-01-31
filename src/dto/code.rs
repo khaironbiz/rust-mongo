@@ -19,8 +19,9 @@ pub struct CreateCodeDto {
     pub display: String,
     #[validate(length(min = 1, message = "System cannot be empty"))]
     pub system: String,
-    #[validate]
-    pub category: CodeCategoryEmbedDto,
+    #[validate(length(min = 24, max = 24, message = "Category ID must be a valid ObjectId (24 chars)"))]
+    #[serde(rename = "categoryId")]
+    pub category_id: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Validate)]

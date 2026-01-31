@@ -31,6 +31,10 @@ pub async fn create_appointment(
     State(state): State<Arc<AppState>>,
     Json(payload): Json<CreateAppointmentRequest>,
 ) -> impl IntoResponse {
+    if let Err(e) = crate::validation::validate_payload(&payload) {
+        return e.into_response();
+    }
+
     let repo = AppointmentRepository::new(state.db.clone());
     let service = AppointmentService::new(repo);
     
@@ -66,6 +70,11 @@ pub async fn update_appointment(
     let Ok(oid) = ObjectId::parse_str(&id) else {
         return ErrorResponse::bad_request("Invalid ID format", Some("ID must be a valid MongoDB ObjectId".to_string())).into_response();
     };
+
+    if let Err(e) = crate::validation::validate_payload(&payload) {
+        return e.into_response();
+    }
+
 
     let repo = AppointmentRepository::new(state.db.clone());
     let service = AppointmentService::new(repo);
