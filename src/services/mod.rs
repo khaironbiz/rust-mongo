@@ -7,6 +7,7 @@ pub mod appointment_service;
 pub mod service_service;
 pub mod insurance_service;
 pub mod auth_service;
+pub mod user_service;
 
 pub use medical_record_service::MedicalRecordService;
 pub use file_service::FileService;
@@ -17,3 +18,4 @@ pub use appointment_service::AppointmentService;
 pub use service_service::ServiceService;
 pub use insurance_service::InsuranceService;
 pub use auth_service::AuthService;
+pub use user_service::UserService;

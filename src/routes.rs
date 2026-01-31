@@ -30,6 +30,9 @@ pub fn create_router(state: Arc<AppState>) -> Router {
     let protected_routes = Router::new()
         // Auth - Get current user
         .route("/auth/me", get(get_me))
+        // Users
+        .route("/users", get(get_users).post(create_user))
+        .route("/users/:id", get(get_user).put(update_user).delete(delete_user))
         // Medical Records
         .route("/medical-records", get(get_medical_records).post(create_medical_record))
         .route("/medical-records/:id", get(get_medical_record).put(update_medical_record).delete(delete_medical_record))
@@ -48,10 +51,10 @@ pub fn create_router(state: Arc<AppState>) -> Router {
         // Files
         .route("/files", get(get_files).post(create_file))
         .route("/files/:id", get(get_file).delete(delete_file))
-        // Apply auth middleware to all protected routes
+        // Apply auth middleware ONLY to these protected routes
         .layer(middleware::from_fn_with_state(state.clone(), auth_middleware));
 
-    // Combine public and protected routes
+    // Combine routes: public first, then protected
     Router::new()
         .merge(public_routes)
         .merge(protected_routes)

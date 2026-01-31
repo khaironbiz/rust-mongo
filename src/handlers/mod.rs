@@ -1,4 +1,5 @@
 pub mod auth_handlers;
+pub mod user_handlers;
 
 use axum::{
     extract::{Path, State, Multipart, Query},
@@ -20,6 +21,7 @@ use crate::{
 
 // Re-export auth handlers
 pub use auth_handlers::{register, login, refresh_token, forgot_password, reset_password, get_me};
+pub use user_handlers::{get_users, get_user, create_user, update_user, delete_user};
 
 // --- Medical Records ---
 
