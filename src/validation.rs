@@ -40,6 +40,7 @@ pub fn validate_nik(nik: &str) -> Result<(), ValidationError> {
 }
 
 /// Validate NIP: must be numeric
+#[allow(dead_code)]
 pub fn validate_nip(nip: &str) -> Result<(), ValidationError> {
     if nip.is_empty() {
         return Err(ValidationError {
@@ -59,6 +60,7 @@ pub fn validate_nip(nip: &str) -> Result<(), ValidationError> {
 }
 
 /// Validate email format (basic check)
+#[allow(dead_code)]
 pub fn validate_email(email: &str) -> Result<(), ValidationError> {
     if !email.contains('@') || !email.contains('.') {
         return Err(ValidationError {
@@ -71,6 +73,7 @@ pub fn validate_email(email: &str) -> Result<(), ValidationError> {
 }
 
 /// Validate required string field
+#[allow(dead_code)]
 pub fn validate_required(field_name: &str, value: &str) -> Result<(), ValidationError> {
     if value.trim().is_empty() {
         return Err(ValidationError {
@@ -83,6 +86,7 @@ pub fn validate_required(field_name: &str, value: &str) -> Result<(), Validation
 }
 
 /// Validate phone number (basic: at least 10 digits)
+#[allow(dead_code)]
 pub fn validate_phone(phone: &str) -> Result<(), ValidationError> {
     let digits: String = phone.chars().filter(|c| c.is_ascii_digit()).collect();
     if digits.len() < 10 {

@@ -5,7 +5,7 @@ use crate::{
     models::{UserRole, RoleEmbed, UserEmbed, OrganizationEmbed, UserName, UserContact, UserBirth},
     repository::UserRoleRepository,
     dto::user_role::{CreateUserRoleRequest, UserRoleResponse, UpdateUserRoleRequest, RoleEmbedDto, UserEmbedDto, OrganizationEmbedDto},
-    pagination::{PaginationParams, PaginatedResult, PaginationMeta},
+    pagination::{PaginationParams, PaginationMeta},
     dto::role::RoleCategoryDto,
     dto::user_role::{UserNameDto, UserContactDto, UserBirthDto}
 };

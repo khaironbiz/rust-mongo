@@ -13,8 +13,10 @@ pub mod role_handlers;
 pub mod user_role_handlers;
 pub mod child_code_handlers;
 pub mod region_handlers;
+pub mod interpretation_handlers;
 
 // Re-export handlers for easy access
+#[allow(unused_imports)]
 pub use auth_handlers::*;
 pub use user_handlers::*;
 pub use medical_record_handlers::*;
@@ -28,5 +30,10 @@ pub use file_handlers::*;
 pub use role_handlers::*;
 pub use user_role_handlers::*;
 pub use code_handlers::*;
+pub use interpretation_handlers::*;
 
 pub mod code_handlers;
+pub mod kit_handlers;
+pub use kit_handlers::*;
+pub mod observation_handlers;
+pub use observation_handlers::*;

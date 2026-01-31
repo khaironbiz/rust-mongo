@@ -14,3 +14,6 @@ pub mod user_role;
 pub mod child_code;
 pub mod code;
 pub mod region;
+pub mod interpretation;
+pub mod kit;
+pub mod observation;

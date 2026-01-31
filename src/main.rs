@@ -14,7 +14,6 @@ mod middleware;
 
 use dotenvy::dotenv;
 use std::env;
-use std::net::SocketAddr;
 use tower_http::trace::TraceLayer;
 
 #[tokio::main]

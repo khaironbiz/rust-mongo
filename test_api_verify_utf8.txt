@@ -1,0 +1,360 @@
+﻿cargo : warning: function `deserialize_id_from_string` 
+is never used
+At line:1 char:1
++ cargo test --test api_tests > test_api_verify.txt 
+2>&1; cargo check > ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (warning: 
+func    ti...` is never used:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  --> src\models.rs:26:4
+   |
+26 | fn deserialize_id_from_string<'de, D>(deserialize...
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of 
+`#[warn(unused)]`) on by default
+
+warning: `rme-api-rust` (lib) generated 1 warning
+warning: unused import: `appointment_handlers::*`
+  --> src\handlers\mod.rs:24:9
+   |
+24 | pub use appointment_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of 
+`#[warn(unused)]`) on by default
+
+warning: unused import: `service_handlers::*`
+  --> src\handlers\mod.rs:25:9
+   |
+25 | pub use service_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `insurance_handlers::*`
+  --> src\handlers\mod.rs:26:9
+   |
+26 | pub use insurance_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `file_handlers::*`
+  --> src\handlers\mod.rs:27:9
+   |
+27 | pub use file_handlers::*;
+   |         ^^^^^^^^^^^^^^^^
+
+warning: unused import: `role_handlers::*`
+  --> src\handlers\mod.rs:28:9
+   |
+28 | pub use role_handlers::*;
+   |         ^^^^^^^^^^^^^^^^
+
+warning: unused import: `user_role_handlers::*`
+  --> src\handlers\mod.rs:29:9
+   |
+29 | pub use user_role_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `code_handlers::*`
+  --> src\handlers\mod.rs:30:9
+   |
+30 | pub use code_handlers::*;
+   |         ^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::net::SocketAddr`
+  --> src\main.rs:17:5
+   |
+17 | use std::net::SocketAddr;
+   |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: function `validate_nip` is never used
+  --> src\validation.rs:43:8
+   |
+43 | pub fn validate_nip(nip: &str) -> Result<(), Vali...
+   |        ^^^^^^^^^^^^
+
+warning: function `validate_email` is never used
+  --> src\validation.rs:62:8
+   |
+62 | pub fn validate_email(email: &str) -> Result<(), ...
+   |        ^^^^^^^^^^^^^^
+
+warning: function `validate_required` is never used
+  --> src\validation.rs:74:8
+   |
+74 | pub fn validate_required(field_name: &str, value:...
+   |        ^^^^^^^^^^^^^^^^^
+
+warning: function `validate_phone` is never used
+  --> src\validation.rs:86:8
+   |
+86 | pub fn validate_phone(phone: &str) -> Result<(), ...
+   |        ^^^^^^^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\medical_record.rs:15:18
+   |
+10 | impl MedicalRecordRepository {
+   | ---------------------------- method in this 
+implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<Me...
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\file.rs:15:18
+   |
+10 | impl FileRepository {
+   | ------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<Fi...
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\doctor.rs:15:18
+   |
+10 | impl DoctorRepository {
+   | --------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<Do...
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\nurse.rs:15:18
+   |
+10 | impl NurseRepository {
+   | -------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<Nu...
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\medicine.rs:15:18
+   |
+10 | impl MedicineRepository {
+   | ----------------------- method in this 
+implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<Me...
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\appointment.rs:15:18
+   |
+10 | impl AppointmentRepository {
+   | -------------------------- method in this 
+implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<Ap...
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\service.rs:15:18
+   |
+10 | impl ServiceRepository {
+   | ---------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<Se...
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\insurance.rs:15:18
+   |
+10 | impl InsuranceRepository {
+   | ------------------------ method in this 
+implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<In...
+   |                  ^^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\medical_record_service.rs:33:18
+   |
+13 | impl MedicalRecordService {
+   | ------------------------- method in this 
+implementation
+...
+33 |     pub async fn get_all(&self) -> Result<Vec<Med...
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\file_service.rs:39:18
+   |
+16 | impl FileService {
+   | ---------------- method in this implementation
+...
+39 |     pub async fn get_all(&self) -> Result<Vec<Fil...
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\doctor_service.rs:29:18
+   |
+12 | impl DoctorService {
+   | ------------------ method in this implementation
+...
+
+running 2 tests
+29 |     pub async fn get_all(&self) -> Result<Vec<Doc...
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\nurse_service.rs:27:18
+   |
+12 | impl NurseService {
+   | ----------------- method in this implementation
+...
+27 |     pub async fn get_all(&self) -> Result<Vec<Nur...
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\medicine_service.rs:33:18
+   |
+12 | impl MedicineService {
+   | -------------------- method in this implementation
+...
+33 |     pub async fn get_all(&self) -> Result<Vec<Med...
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\appointment_service.rs:29:18
+   |
+12 | impl AppointmentService {
+   | ----------------------- method in this 
+implementation
+...
+29 |     pub async fn get_all(&self) -> Result<Vec<App...
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\service_service.rs:27:18
+   |
+12 | impl ServiceService {
+   | ------------------- method in this implementation
+...
+27 |     pub async fn get_all(&self) -> Result<Vec<Ser...
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\insurance_service.rs:28:18
+   |
+12 | impl InsuranceService {
+   | --------------------- method in this implementation
+...
+28 |     pub async fn get_all(&self) -> Result<Vec<Ins...
+   |                  ^^^^^^^
+
+warning: methods `get_user_by_id` and `logout` are never 
+used
+   --> src\services\auth_service.rs:430:18
+    |
+ 32 | impl AuthService {
+    | ---------------- methods in this implementation
+...
+430 |     pub async fn get_user_by_id(&self, id: Objec...
+    |                  ^^^^^^^^^^^^^^
+...
+435 |     pub async fn logout(&self, user_id: ObjectId...
+    |                  ^^^^^^
+
+warning: associated function `created` is never used
+  --> src\response.rs:57:12
+   |
+38 | impl<T: Serialize> ApiResponse<T> {
+   | --------------------------------- associated 
+function in this implementation
+...
+57 |     pub fn created(message: impl Into<String>, da...
+   |            ^^^^^^^
+
+warning: associated functions `forbidden` and `conflict` 
+are never used
+   --> src\response.rs:147:12
+    |
+116 | impl ErrorResponse {
+    | ------------------ associated functions in this 
+implementation
+...
+147 |     pub fn forbidden(message: impl Into<String>)...
+    |            ^^^^^^^^^
+...
+157 |     pub fn conflict(message: impl Into<String>, ...
+    |            ^^^^^^^^
+
+warning: associated function `new` is never used
+  --> src\pagination.rs:25:12
+   |
+23 | impl PaginationParams {
+   | --------------------- associated function in this 
+implementation
+24 |     /// Create pagination params
+25 |     pub fn new(page: u32, limit: u32) -> Self {
+   |            ^^^
+
+warning: field `total_pages` is never read
+   --> src\pagination.rs:103:9
+    |
+100 | pub struct PaginatedResult<T> {
+    |            --------------- field in this struct
+...
+103 |     pub total_pages: u64,
+    |         ^^^^^^^^^^^
+    |
+    = note: `PaginatedResult` has derived impls for the 
+traits `Clone` and `Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: struct `DeleteResponse` is never constructed
+ --> src\dto\common.rs:4:12
+  |
+4 | pub struct DeleteResponse {
+  |            ^^^^^^^^^^^^^^
+
+warning: struct `BulkDeleteRequest` is never constructed
+  --> src\dto\common.rs:11:12
+   |
+11 | pub struct BulkDeleteRequest {
+   |            ^^^^^^^^^^^^^^^^^
+
+warning: struct `BulkDeleteResponse` is never constructed
+  --> src\dto\common.rs:16:12
+   |
+16 | pub struct BulkDeleteResponse {
+   |            ^^^^^^^^^^^^^^^^^^
+
+warning: struct `ParentCodeEmbedDto` is never constructed
+  --> src\dto\child_code.rs:28:12
+   |
+28 | pub struct ParentCodeEmbedDto {
+   |            ^^^^^^^^^^^^^^^^^^
+
+warning: struct `ChildCodeResponse` is never constructed
+  --> src\dto\child_code.rs:36:12
+   |
+36 | pub struct ChildCodeResponse {
+   |            ^^^^^^^^^^^^^^^^^
+
+warning: struct `RegionResponse` is never constructed
+  --> src\dto\region.rs:23:12
+   |
+23 | pub struct RegionResponse {
+   |            ^^^^^^^^^^^^^^
+
+warning: function `require_auth` is never used
+  --> src\middleware.rs:76:14
+   |
+76 | pub async fn require_auth(
+   |              ^^^^^^^^^^^^
+
+warning: `rme-api-rust` (bin "rme-api-rust") generated 
+41 warnings (1 duplicate) (run `cargo fix --bin 
+"rme-api-rust" -p rme-api-rust` to apply 8 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] 
+target(s) in 0.45s
+     Running tests\api_tests.rs 
+(target\debug\deps\api_tests-ca91dd78ad4986ba.exe)
+test get_medical_records_returns_ok ... ok
+test get_doctors_returns_ok ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+

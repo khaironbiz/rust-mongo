@@ -23,7 +23,7 @@ impl RegionRepository {
             .map_err(|e| e.to_string())?;
 
         let mut created_region = region;
-        created_region.id = result.inserted_id.as_object_id();
+        created_region.id_mongo = result.inserted_id.as_object_id();
 
         Ok(created_region)
     }
@@ -38,6 +38,33 @@ impl RegionRepository {
         let regions: Vec<Region> = cursor.try_collect().await.map_err(|e| e.to_string())?;
 
         Ok(regions)
+    }
+
+    pub async fn find_all_paginated(&self, pagination: crate::pagination::PaginationParams) -> Result<(Vec<Region>, u64), String> {
+        self.find_by_filter_paginated(doc! {}, pagination).await
+    }
+
+    pub async fn find_by_filter_paginated(&self, filter: mongodb::bson::Document, pagination: crate::pagination::PaginationParams) -> Result<(Vec<Region>, u64), String> {
+        // Get total count
+        let total = self.collection
+            .count_documents(filter.clone(), None)
+            .await
+            .map_err(|e| e.to_string())?;
+
+        // Get paginated results
+        let options = mongodb::options::FindOptions::builder()
+            .skip(pagination.skip())
+            .limit(pagination.limit() as i64)
+            .build();
+
+        let cursor = self.collection
+            .find(filter, options)
+            .await
+            .map_err(|e| e.to_string())?;
+
+        let regions: Vec<Region> = cursor.try_collect().await.map_err(|e| e.to_string())?;
+
+        Ok((regions, total))
     }
 
     pub async fn find_by_id(&self, id: ObjectId) -> Result<Option<Region>, String> {
@@ -59,8 +86,13 @@ impl RegionRepository {
         let update = doc! {
             "$set": {
                 "code": region.code.clone(),
-                "name": region.name.clone(),
-                "updated_at": region.updated_at.clone(),
+                "nama": region.nama.clone(),
+                "wilayah": region.wilayah.clone(),
+                "provinsi": region.provinsi.clone(),
+                "kota": region.kota.clone(),
+                "kecamatan": region.kecamatan.clone(),
+                "kelurahan": region.kelurahan.clone(),
+                "len": region.len.clone(),
             }
         };
 

@@ -4,7 +4,7 @@ use crate::{
     models::{Role, RoleCategory},
     repository::RoleRepository,
     dto::role::{CreateRoleRequest, RoleResponse, UpdateRoleRequest, RoleCategoryDto},
-    pagination::{PaginationParams, PaginatedResult, PaginationMeta},
+    pagination::{PaginationParams, PaginationMeta},
 };
 
 pub struct RoleService {

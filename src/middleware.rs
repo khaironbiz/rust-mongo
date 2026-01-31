@@ -23,7 +23,7 @@ pub struct AuthUser {
 /// This middleware extracts and validates the JWT token from the Authorization header.
 /// If valid, it adds the user claims to the request extensions for use in handlers.
 pub async fn auth_middleware(
-    State(state): State<Arc<AppState>>,
+    State(_state): State<Arc<AppState>>,
     mut request: Request,
     next: Next,
 ) -> Response {
@@ -73,6 +73,7 @@ pub async fn auth_middleware(
 ///     // user.id, user.email, user.name available here
 /// }
 /// ```
+#[allow(dead_code)]
 pub async fn require_auth(
     request: Request,
     next: Next,

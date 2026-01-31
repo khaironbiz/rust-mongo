@@ -1,0 +1,126 @@
+﻿cargo :     Checking rme-api-rust v0.1.0 
+(C:\xampp\htdocs\tsi\rust-mongo)
+At line:1 char:1
++ cargo check 2>&1 | Out-File -FilePath 
+cargo_check_utf8.log -Encoding  ...
++ ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (    Checkin 
+   g rm...tsi\rust-mongo):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+error[E0432]: unresolved import `kit`
+  --> src\repository\mod.rs:34:9
+   |
+34 | pub use kit::KitRepository;
+   |         ^^^ use of unresolved module or unlinked 
+crate `kit`
+   |
+help: to make use of source file src\repository\kit.rs, 
+use `mod kit` in this file to declare the module
+  --> src\lib.rs:1:1
+   |
+ 1 + mod kit;
+   |
+
+error[E0432]: unresolved import `kit_service`
+  --> src\services\mod.rs:36:9
+   |
+36 | pub use kit_service::KitService;
+   |         ^^^^^^^^^^^ use of unresolved module or 
+unlinked crate `kit_service`
+   |
+help: there is a crate or module with a similar name
+   |
+36 - pub use kit_service::KitService;
+36 + pub use file_service::KitService;
+   |
+
+error[E0432]: unresolved import `kit_handlers`
+  --> src\handlers\mod.rs:36:9
+   |
+36 | pub use kit_handlers::*;
+   |         ^^^^^^^^^^^^ use of unresolved module or 
+unlinked crate `kit_handlers`
+   |
+help: there is a crate or module with a similar name
+   |
+36 - pub use kit_handlers::*;
+36 + pub use auth_handlers::*;
+   |
+
+warning: unused imports: `ObservationAtmSehatOwner`, 
+`ObservationAtmSehat`, `ObservationBaseLine`, 
+`ObservationCategory`, `ObservationCoding`, 
+`ObservationInterpretation`, `ObservationPasienLahir`, 
+`ObservationPasienNama`, `ObservationPasienUsia`, 
+`ObservationPasien`, and `ObservationUnit`
+ --> src\dto\observation.rs:4:18
+  |
+4 |     Observation, ObservationUnit, ObservationPasien, 
+ObservationPasienNama,
+  |                  ^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^^^
+5 |     ObservationPasienLahir, ObservationPasienUsia, 
+ObservationAtmSehat,
+  |     ^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^
+6 |     ObservationAtmSehatOwner, ObservationCoding, 
+ObservationCategory,
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^  
+^^^^^^^^^^^^^^^^^^^
+7 |     ObservationBaseLine, ObservationInterpretation
+  |     ^^^^^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of 
+`#[warn(unused)]`) on by default
+
+error[E0382]: use of moved value: `params`
+  --> src\handlers\observation_handlers.rs:28:17
+   |
+19 |     Query(params): Query<PaginationParams>,
+   |           ------ move occurs because `params` has 
+type `PaginationParams`, which does not implement the 
+`Copy` trait
+...
+24 |     match service.get_observations(params).await {
+   |                                    ------ value 
+moved here
+...
+28 |                 params.limit,
+   |                 ^^^^^^^^^^^^ value used here after 
+move
+   |
+note: consider changing this parameter type in method 
+`get_observations` to borrow instead if owning the value 
+isn't necessary
+  --> src\services\observation_service.rs:92:54
+   |
+92 |     pub async fn get_observations(&self, 
+pagination: PaginationParams) -> 
+Result<(Vec<ObservationResponse>, u64), String> {
+   |                  ---------------- in this method    
+ ^^^^^^^^^^^^^^^^ this parameter takes ownership of the 
+value
+help: consider cloning the value if the performance cost 
+is acceptable
+   |
+24 |     match 
+service.get_observations(params.clone()).await {
+   |                                          ++++++++
+
+warning: unused variable: `oid`
+  --> src\handlers\observation_handlers.rs:58:12
+   |
+58 |     let Ok(oid) = ObjectId::parse_str(&id) else {
+   |            ^^^ help: if this is intentional, prefix 
+it with an underscore: `_oid`
+   |
+   = note: `#[warn(unused_variables)]` (part of 
+`#[warn(unused)]`) on by default
+
+Some errors have detailed explanations: E0382, E0432.
+For more information about an error, try `rustc 
+--explain E0382`.
+warning: `rme-api-rust` (lib) generated 2 warnings
+error: could not compile `rme-api-rust` (lib) due to 4 
+previous errors; 2 warnings emitted

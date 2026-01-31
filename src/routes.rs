@@ -67,7 +67,24 @@ pub fn create_router(state: Arc<AppState>) -> Router {
         // Regions
         .nest("/regions", Router::new()
             .route("/", get(region_handlers::get_regions).post(region_handlers::create_region))
+            .route("/provinsi/:provinsi", get(region_handlers::get_regions_by_provinsi))
+            .route("/kota/:kota", get(region_handlers::get_regions_by_kota))
+            .route("/kecamatan/:kecamatan", get(region_handlers::get_regions_by_kecamatan))
+            .route("/code/:code", get(region_handlers::get_region_by_code))
             .route("/:id", get(region_handlers::get_region).put(region_handlers::update_region).delete(region_handlers::delete_region))
+        )
+        // Interpretations
+        .nest("/interpretations", Router::new()
+            .route("/", get(interpretation_handlers::get_interpretations).post(interpretation_handlers::create_interpretation))
+            .route("/code/:code", get(interpretation_handlers::get_interpretation_by_code))
+            .route("/coding/:coding_code", get(interpretation_handlers::get_interpretations_by_coding_code))
+            .route("/find/:code/:coding_code", get(interpretation_handlers::get_interpretation_by_code_and_coding_code))
+            .route("/:id", get(interpretation_handlers::get_interpretation).put(interpretation_handlers::update_interpretation).delete(interpretation_handlers::delete_interpretation))
+        )
+        // Kits
+        .nest("/kits", Router::new()
+            .route("/", get(kit_handlers::get_kits).post(kit_handlers::create_kit))
+            .route("/:id", get(kit_handlers::get_kit).put(kit_handlers::update_kit).delete(kit_handlers::delete_kit))
         )
         // Roles
         .route("/roles", get(role_handlers::get_roles).post(role_handlers::create_role))
@@ -78,9 +95,11 @@ pub fn create_router(state: Arc<AppState>) -> Router {
         // Codes
         .route("/codes", get(code_handlers::get_codes).post(code_handlers::create_code))
         .route("/codes/:id", get(code_handlers::get_code).put(code_handlers::update_code).delete(code_handlers::delete_code))
-        // Child Codes
-        .route("/child-codes", get(child_code_handlers::get_child_codes).post(child_code_handlers::create_child_code))
-        .route("/child-codes/:id", get(child_code_handlers::get_child_code).put(child_code_handlers::update_child_code).delete(child_code_handlers::delete_child_code))
+        // Observations
+        .nest("/observations", Router::new()
+            .route("/", get(observation_handlers::get_observations).post(observation_handlers::create_observation))
+            .route("/:id", get(observation_handlers::get_observation).put(observation_handlers::update_observation).delete(observation_handlers::delete_observation))
+        )
         // Apply auth middleware ONLY to these protected routes
         .layer(middleware::from_fn_with_state(state.clone(), auth_middleware));
 

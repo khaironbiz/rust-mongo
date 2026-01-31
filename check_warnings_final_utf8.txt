@@ -1,0 +1,641 @@
+﻿cargo :     Checking cfg-if v1.0.4
+At line:1 char:57
++ ... test_api_verify.txt 2>&1; cargo check > 
+check_warnings_final.txt 2>&1
++                               
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (    Checking  
+   cfg-if v1.0.4:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    Checking windows-link v0.2.1
+    Checking bytes v1.11.0
+    Checking pin-project-lite v0.2.16
+    Checking itoa v1.0.17
+    Checking futures-core v0.3.31
+    Checking windows_x86_64_msvc v0.53.1
+    Checking smallvec v1.15.1
+    Checking windows-sys v0.61.2
+    Checking windows-targets v0.53.5
+    Checking scopeguard v1.2.0
+    Checking futures-io v0.3.31
+    Checking windows-sys v0.60.2
+    Checking lock_api v0.4.14
+    Checking memchr v2.7.6
+    Checking parking_lot_core v0.9.12
+    Checking once_cell v1.21.3
+    Checking parking_lot v0.12.5
+    Checking pin-utils v0.1.0
+    Checking log v0.4.29
+    Checking subtle v2.6.1
+   Compiling getrandom v0.3.4
+    Checking slab v0.4.11
+    Checking zeroize v1.8.2
+   Compiling jobserver v0.1.34
+    Checking getrandom v0.2.17
+    Checking typenum v1.19.0
+    Checking futures-task v0.3.31
+    Checking tracing-core v0.1.36
+   Compiling cc v1.2.55
+    Checking futures-util v0.3.31
+    Checking http v1.4.0
+    Checking generic-array v0.14.7
+    Checking socket2 v0.6.2
+    Checking futures-sink v0.3.31
+    Checking fnv v1.0.7
+    Checking tracing v0.1.44
+    Checking http-body v1.0.1
+    Checking num-traits v0.2.19
+    Checking powerfmt v0.2.0
+   Compiling time-core v0.1.2
+   Compiling num-conv v0.1.0
+    Checking deranged v0.3.11
+   Compiling time-macros v0.2.18
+    Checking crypto-common v0.1.7
+    Checking http v0.2.12
+    Checking foldhash v0.2.0
+    Checking allocator-api2 v0.2.21
+    Checking equivalent v1.0.2
+    Checking num-integer v0.1.46
+    Checking http-body-util v0.1.3
+    Checking hashbrown v0.16.1
+    Checking block-buffer v0.10.4
+    Checking ryu v1.0.22
+    Checking percent-encoding v2.3.2
+    Checking http-body v0.4.6
+    Checking digest v0.10.7
+    Checking rand_core v0.6.4
+    Checking outref v0.5.2
+    Checking untrusted v0.9.0
+    Checking either v1.15.0
+    Checking time v0.3.36
+    Checking vsimd v0.8.0
+    Checking serde_core v1.0.228
+    Checking bytes-utils v0.1.4
+    Checking indexmap v2.13.0
+   Compiling ring v0.17.14
+    Checking base64-simd v0.8.0
+   Compiling cmake v0.1.57
+    Checking futures-channel v0.3.31
+    Checking windows_x86_64_msvc v0.52.6
+    Checking tower-service v0.3.3
+   Compiling aws-lc-sys v0.37.0
+    Checking base64 v0.22.1
+    Checking windows-targets v0.52.6
+    Checking httparse v1.10.1
+    Checking try-lock v0.2.5
+    Checking want v0.3.1
+    Checking windows-sys v0.52.0
+    Checking form_urlencoded v1.2.2
+    Checking const-oid v0.9.6
+    Checking ipnet v2.11.0
+    Checking mio v1.1.1
+    Checking httpdate v1.0.3
+    Checking der v0.6.1
+    Checking rustls-pki-types v1.14.0
+    Checking tokio v1.49.0
+    Checking socket2 v0.5.10
+    Checking base64ct v1.8.3
+    Checking cpufeatures v0.2.17
+    Checking atomic-waker v1.1.2
+    Checking tower-layer v0.3.3
+    Checking tinyvec_macros v0.1.1
+    Checking spki v0.6.0
+    Checking tinyvec v1.10.0
+    Checking crc32fast v1.5.0
+    Checking pkcs8 v0.9.0
+    Checking libc v0.2.180
+    Checking hmac v0.12.1
+    Checking ff v0.12.1
+    Checking crypto-bigint v0.4.9
+    Checking sync_wrapper v1.0.2
+    Checking base16ct v0.1.1
+    Checking unicode-normalization v0.1.25
+    Checking sec1 v0.3.0
+    Checking group v0.12.1
+    Checking zerocopy v0.8.36
+    Checking sha2 v0.10.9
+    Checking schannel v0.1.28
+   Compiling rustls v0.21.12
+    Checking hex v0.4.3
+    Checking unicode-bidi v0.3.18
+    Checking rustls-native-certs v0.8.3
+    Checking elliptic-curve v0.12.3
+    Checking rfc6979 v0.3.1
+    Checking signature v1.6.4
+    Checking serde v1.0.228
+    Checking ecdsa v0.14.8
+    Checking uuid v1.20.0
+    Checking p256 v0.11.1
+    Checking rustls-webpki v0.101.7
+    Checking sct v0.7.1
+    Checking idna v0.4.0
+    Checking crypto-bigint v0.5.5
+    Checking fastrand v2.3.0
+    Checking url v2.4.1
+    Checking tokio-util v0.7.18
+    Checking aws-smithy-async v1.2.10
+    Checking tower v0.5.3
+    Checking zmij v1.0.17
+    Checking aws-smithy-types v1.4.2
+    Checking h2 v0.4.13
+    Checking h2 v0.3.27
+    Checking ppv-lite86 v0.2.21
+    Checking tokio-rustls v0.24.1
+    Checking aws-smithy-runtime-api v1.11.2
+    Checking aws-smithy-eventstream v0.60.17
+    Checking windows_x86_64_msvc v0.48.5
+   Compiling semver-parser v0.7.0
+   Compiling strsim v0.10.0
+    Checking lazy_static v1.5.0
+   Compiling darling_core v0.13.4
+   Compiling semver v0.9.0
+    Checking windows-targets v0.48.5
+    Checking aws-smithy-json v0.61.9
+    Checking aws-smithy-http v0.62.6
+    Checking aws-credential-types v1.2.11
+    Checking aws-smithy-observability v0.2.3
+    Checking aws-types v1.3.11
+    Checking aws-sigv4 v1.3.7
+    Checking serde_json v1.0.149
+    Checking regex-lite v0.1.8
+   Compiling aho-corasick v1.1.4
+    Checking windows-sys v0.48.0
+    Checking hyper v0.14.32
+    Checking hyper v1.8.1
+   Compiling darling_macro v0.13.4
+   Compiling rustc_version v0.2.3
+    Checking rand_chacha v0.3.1
+    Checking rand_core v0.9.5
+   Compiling regex-syntax v0.8.8
+    Checking hyper-util v0.1.19
+    Checking matches v0.1.10
+    Checking crc-catalog v2.4.0
+    Checking tap v1.0.1
+    Checking mime v0.3.17
+    Checking xmlparser v0.13.6
+    Checking aws-smithy-xml v0.60.13
+    Checking wyz v0.5.1
+    Checking crc v3.3.0
+    Checking idna v0.2.3
+   Compiling regex-automata v0.4.13
+    Checking winreg v0.50.0
+    Checking thiserror v1.0.69
+    Checking rand_chacha v0.9.0
+    Checking rand v0.8.5
+    Checking hyper-rustls v0.24.2
+   Compiling rustc_version_runtime v0.2.1
+   Compiling darling v0.13.4
+    Checking radium v0.7.0
+    Checking md-5 v0.10.6
+    Checking inout v0.1.4
+    Checking linked-hash-map v0.5.6
+    Checking funty v2.0.0
+   Compiling unicase v2.9.0
+    Checking widestring v1.2.1
+    Checking data-encoding v2.10.0
+    Checking spin v0.10.0
+    Checking urlencoding v2.1.3
+    Checking crc-fast v1.9.0
+    Checking aws-smithy-query v0.60.12
+    Checking trust-dns-proto v0.21.2
+    Checking ipconfig v0.3.2
+   Compiling regex v1.12.2
+    Checking bitvec v1.0.1
+   Compiling mime_guess v2.0.5
+    Checking lru-cache v0.1.2
+    Checking cipher v0.4.4
+    Checking thiserror v2.0.18
+   Compiling serde_with_macros v1.5.2
+    Checking rand v0.9.2
+    Checking ahash v0.8.12
+    Checking winapi v0.3.9
+    Checking sha1 v0.10.6
+    Checking serde_bytes v0.11.19
+    Checking num-bigint v0.4.6
+    Checking encoding_rs v0.8.35
+    Checking resolv-conf v0.7.6
+    Checking unicode-properties v0.1.4
+    Checking base64 v0.21.7
+    Checking spin v0.9.8
+    Checking byteorder v1.5.0
+    Checking rustls-pemfile v1.0.4
+    Checking blowfish v0.9.1
+   Compiling validator_derive v0.16.0
+    Checking stringprep v0.1.5
+    Checking bson v2.15.0
+    Checking socket2 v0.4.10
+    Checking simple_asn1 v0.6.3
+    Checking trust-dns-resolver v0.21.2
+    Checking serde_with v1.14.0
+    Checking multer v3.1.0
+    Checking aws-smithy-checksums v0.63.13
+    Checking axum-core v0.4.5
+    Checking aws-smithy-http v0.60.12
+    Checking sharded-slab v0.1.7
+    Checking chrono v0.4.43
+    Checking serde_urlencoded v0.7.1
+    Checking sha-1 v0.10.1
+    Checking serde_path_to_error v0.1.20
+    Checking nu-ansi-term v0.50.3
+    Checking pem v3.0.6
+    Checking lru v0.16.3
+    Checking pbkdf2 v0.11.0
+    Checking futures-executor v0.3.31
+    Checking tracing-log v0.2.0
+    Checking thread_local v1.1.9
+    Checking matchit v0.7.3
+    Checking take_mut v0.2.2
+    Checking bitflags v2.10.0
+    Checking webpki-roots v0.25.4
+    Checking bitflags v1.3.2
+    Checking base64 v0.13.1
+    Checking tower-http v0.5.2
+    Checking tracing-subscriber v0.3.22
+    Checking mongodb v2.8.2
+    Checking axum v0.7.9
+    Checking jsonwebtoken v9.3.1
+    Checking validator v0.16.1
+    Checking bcrypt v0.15.1
+    Checking dotenvy v0.15.7
+   Compiling aws-lc-rs v1.15.4
+   Compiling rustls v0.23.36
+    Checking rustls-webpki v0.103.9
+    Checking tokio-rustls v0.26.4
+    Checking hyper-rustls v0.27.7
+    Checking aws-smithy-http-client v1.1.8
+    Checking aws-smithy-runtime v1.9.8
+    Checking aws-runtime v1.5.18
+    Checking aws-sdk-ssooidc v1.94.0
+    Checking aws-sdk-sts v1.96.0
+    Checking aws-sdk-sso v1.92.0
+    Checking aws-sdk-s3 v1.121.0
+    Checking aws-config v1.5.11
+    Checking rme-api-rust v0.1.0 
+(C:\xampp\htdocs\tsi\rust-mongo)
+warning: function `deserialize_id_from_string` is never 
+used
+  --> src\models.rs:26:4
+   |
+26 | fn deserialize_id_from_string<'de, D>(deserializer: 
+D) -> Result<Option<ObjectId>, D::Error>
+   |    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of 
+`#[warn(unused)]`) on by default
+
+warning: `rme-api-rust` (lib) generated 1 warning
+warning: unused import: `appointment_handlers::*`
+  --> src\handlers\mod.rs:24:9
+   |
+24 | pub use appointment_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of 
+`#[warn(unused)]`) on by default
+
+warning: unused import: `service_handlers::*`
+  --> src\handlers\mod.rs:25:9
+   |
+25 | pub use service_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `insurance_handlers::*`
+  --> src\handlers\mod.rs:26:9
+   |
+26 | pub use insurance_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `file_handlers::*`
+  --> src\handlers\mod.rs:27:9
+   |
+27 | pub use file_handlers::*;
+   |         ^^^^^^^^^^^^^^^^
+
+warning: unused import: `role_handlers::*`
+  --> src\handlers\mod.rs:28:9
+   |
+28 | pub use role_handlers::*;
+   |         ^^^^^^^^^^^^^^^^
+
+warning: unused import: `user_role_handlers::*`
+  --> src\handlers\mod.rs:29:9
+   |
+29 | pub use user_role_handlers::*;
+   |         ^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `code_handlers::*`
+  --> src\handlers\mod.rs:30:9
+   |
+30 | pub use code_handlers::*;
+   |         ^^^^^^^^^^^^^^^^
+
+warning: unused import: `std::net::SocketAddr`
+  --> src\main.rs:17:5
+   |
+17 | use std::net::SocketAddr;
+   |     ^^^^^^^^^^^^^^^^^^^^
+
+warning: function `validate_nip` is never used
+  --> src\validation.rs:43:8
+   |
+43 | pub fn validate_nip(nip: &str) -> Result<(), 
+ValidationError> {
+   |        ^^^^^^^^^^^^
+
+warning: function `validate_email` is never used
+  --> src\validation.rs:62:8
+   |
+62 | pub fn validate_email(email: &str) -> Result<(), 
+ValidationError> {
+   |        ^^^^^^^^^^^^^^
+
+warning: function `validate_required` is never used
+  --> src\validation.rs:74:8
+   |
+74 | pub fn validate_required(field_name: &str, value: 
+&str) -> Result<(), ValidationError> {
+   |        ^^^^^^^^^^^^^^^^^
+
+warning: function `validate_phone` is never used
+  --> src\validation.rs:86:8
+   |
+86 | pub fn validate_phone(phone: &str) -> Result<(), 
+ValidationError> {
+   |        ^^^^^^^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\medical_record.rs:15:18
+   |
+10 | impl MedicalRecordRepository {
+   | ---------------------------- method in this 
+implementation
+...
+15 |     pub async fn find_all(&self) -> 
+Result<Vec<MedicalRecord>, String> {
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\file.rs:15:18
+   |
+10 | impl FileRepository {
+   | ------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> Result<Vec<File>, 
+String> {
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\doctor.rs:15:18
+   |
+10 | impl DoctorRepository {
+   | --------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> 
+Result<Vec<Doctor>, String> {
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\nurse.rs:15:18
+   |
+10 | impl NurseRepository {
+   | -------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> 
+Result<Vec<Nurse>, String> {
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\medicine.rs:15:18
+   |
+10 | impl MedicineRepository {
+   | ----------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> 
+Result<Vec<Medicine>, String> {
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\appointment.rs:15:18
+   |
+10 | impl AppointmentRepository {
+   | -------------------------- method in this 
+implementation
+...
+15 |     pub async fn find_all(&self) -> 
+Result<Vec<Appointment>, String> {
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\service.rs:15:18
+   |
+10 | impl ServiceRepository {
+   | ---------------------- method in this implementation
+...
+15 |     pub async fn find_all(&self) -> 
+Result<Vec<Service>, String> {
+   |                  ^^^^^^^^
+
+warning: method `find_all` is never used
+  --> src\repository\insurance.rs:15:18
+   |
+10 | impl InsuranceRepository {
+   | ------------------------ method in this implementation
+...
+15 |     pub async fn find_all(&self) -> 
+Result<Vec<Insurance>, String> {
+   |                  ^^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\medical_record_service.rs:33:18
+   |
+13 | impl MedicalRecordService {
+   | ------------------------- method in this 
+implementation
+...
+33 |     pub async fn get_all(&self) -> 
+Result<Vec<MedicalRecordResponse>, String> {
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\file_service.rs:39:18
+   |
+16 | impl FileService {
+   | ---------------- method in this implementation
+...
+39 |     pub async fn get_all(&self) -> 
+Result<Vec<FileResponse>, String> {
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\doctor_service.rs:29:18
+   |
+12 | impl DoctorService {
+   | ------------------ method in this implementation
+...
+29 |     pub async fn get_all(&self) -> 
+Result<Vec<DoctorResponse>, (StatusCode, String)> {
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\nurse_service.rs:27:18
+   |
+12 | impl NurseService {
+   | ----------------- method in this implementation
+...
+27 |     pub async fn get_all(&self) -> 
+Result<Vec<NurseResponse>, (StatusCode, String)> {
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\medicine_service.rs:33:18
+   |
+12 | impl MedicineService {
+   | -------------------- method in this implementation
+...
+33 |     pub async fn get_all(&self) -> 
+Result<Vec<MedicineResponse>, (StatusCode, String)> {
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\appointment_service.rs:29:18
+   |
+12 | impl AppointmentService {
+   | ----------------------- method in this implementation
+...
+29 |     pub async fn get_all(&self) -> 
+Result<Vec<AppointmentResponse>, (StatusCode, String)> {
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\service_service.rs:27:18
+   |
+12 | impl ServiceService {
+   | ------------------- method in this implementation
+...
+27 |     pub async fn get_all(&self) -> 
+Result<Vec<ServiceResponse>, (StatusCode, String)> {
+   |                  ^^^^^^^
+
+warning: method `get_all` is never used
+  --> src\services\insurance_service.rs:28:18
+   |
+12 | impl InsuranceService {
+   | --------------------- method in this implementation
+...
+28 |     pub async fn get_all(&self) -> 
+Result<Vec<InsuranceResponse>, (StatusCode, String)> {
+   |                  ^^^^^^^
+
+warning: methods `get_user_by_id` and `logout` are never 
+used
+   --> src\services\auth_service.rs:430:18
+    |
+ 32 | impl AuthService {
+    | ---------------- methods in this implementation
+...
+430 |     pub async fn get_user_by_id(&self, id: ObjectId) 
+-> Result<Option<User>, String> {
+    |                  ^^^^^^^^^^^^^^
+...
+435 |     pub async fn logout(&self, user_id: ObjectId) -> 
+Result<(), (StatusCode, String)> {
+    |                  ^^^^^^
+
+warning: associated function `created` is never used
+  --> src\response.rs:57:12
+   |
+38 | impl<T: Serialize> ApiResponse<T> {
+   | --------------------------------- associated function 
+in this implementation
+...
+57 |     pub fn created(message: impl Into<String>, data: 
+T) -> Self {
+   |            ^^^^^^^
+
+warning: associated functions `forbidden` and `conflict` 
+are never used
+   --> src\response.rs:147:12
+    |
+116 | impl ErrorResponse {
+    | ------------------ associated functions in this 
+implementation
+...
+147 |     pub fn forbidden(message: impl Into<String>) -> 
+Self {
+    |            ^^^^^^^^^
+...
+157 |     pub fn conflict(message: impl Into<String>, 
+details: Option<String>) -> Self {
+    |            ^^^^^^^^
+
+warning: associated function `new` is never used
+  --> src\pagination.rs:25:12
+   |
+23 | impl PaginationParams {
+   | --------------------- associated function in this 
+implementation
+24 |     /// Create pagination params
+25 |     pub fn new(page: u32, limit: u32) -> Self {
+   |            ^^^
+
+warning: field `total_pages` is never read
+   --> src\pagination.rs:103:9
+    |
+100 | pub struct PaginatedResult<T> {
+    |            --------------- field in this struct
+...
+103 |     pub total_pages: u64,
+    |         ^^^^^^^^^^^
+    |
+    = note: `PaginatedResult` has derived impls for the 
+traits `Clone` and `Debug`, but these are intentionally 
+ignored during dead code analysis
+
+warning: struct `DeleteResponse` is never constructed
+ --> src\dto\common.rs:4:12
+  |
+4 | pub struct DeleteResponse {
+  |            ^^^^^^^^^^^^^^
+
+warning: struct `BulkDeleteRequest` is never constructed
+  --> src\dto\common.rs:11:12
+   |
+11 | pub struct BulkDeleteRequest {
+   |            ^^^^^^^^^^^^^^^^^
+
+warning: struct `BulkDeleteResponse` is never constructed
+  --> src\dto\common.rs:16:12
+   |
+16 | pub struct BulkDeleteResponse {
+   |            ^^^^^^^^^^^^^^^^^^
+
+warning: struct `ParentCodeEmbedDto` is never constructed
+  --> src\dto\child_code.rs:28:12
+   |
+28 | pub struct ParentCodeEmbedDto {
+   |            ^^^^^^^^^^^^^^^^^^
+
+warning: struct `ChildCodeResponse` is never constructed
+  --> src\dto\child_code.rs:36:12
+   |
+36 | pub struct ChildCodeResponse {
+   |            ^^^^^^^^^^^^^^^^^
+
+warning: struct `RegionResponse` is never constructed
+  --> src\dto\region.rs:23:12
+   |
+23 | pub struct RegionResponse {
+   |            ^^^^^^^^^^^^^^
+
+warning: function `require_auth` is never used
+  --> src\middleware.rs:76:14
+   |
+76 | pub async fn require_auth(
+   |              ^^^^^^^^^^^^
+
+warning: `rme-api-rust` (bin "rme-api-rust") generated 41 
+warnings (1 duplicate) (run `cargo fix --bin 
+"rme-api-rust" -p rme-api-rust` to apply 8 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] 
+target(s) in 1m 11s
